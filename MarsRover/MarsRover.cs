@@ -9,13 +9,11 @@ namespace MarsRover
 
         public Rover(string dimension)
         {
-            plateau = new int[5, 5]{
-                { 0,0,0,0,0},
-                { 0,0,0,0,0},
-                { 0,0,0,0,0},
-                { 0,0,0,0,0},
-                { 0,0,0,0,0}
-            };
+            var size = dimension.Split(' ');
+            var rows = Int32.Parse(size[0]);
+            var cols = Int32.Parse(size[1]);
+
+            plateau = new int[rows, cols];
         }
 
         public void moves(string v)

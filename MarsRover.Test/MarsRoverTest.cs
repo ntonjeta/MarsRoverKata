@@ -4,15 +4,21 @@ namespace MarsRover.Test
 {
     public class Tests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
+        public static int[,] InitialPlatoue = {
+            {0,0,0,0,0},
+            {0,0,0,0,0},
+            {0,0,0,0,0},
+            {0,0,0,0,0},
+            {0,0,0,0,0}
+        };
+
+        private Rover _sut;
 
         [Test]
-        public void Test1()
+        public void ShouldCreateRoverPlatoue()
         {
-            Assert.Pass();
+            _sut = new Rover("5 5");
+            Assert.AreEqual(InitialPlatoue,_sut.plateau);
         }
     }
 }

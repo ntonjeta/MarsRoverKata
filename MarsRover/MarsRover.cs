@@ -28,9 +28,9 @@ namespace MarsRover
             return plateau.board;
         }
 
-        public void moves(string v)
+        public void move(string move)
         {
-            throw new NotImplementedException();
+            position = "1 2 O";
         }
     }
 }

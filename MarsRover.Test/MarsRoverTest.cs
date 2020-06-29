@@ -37,13 +37,24 @@ namespace MarsRover.Test
         }
 
         [Test]
-        public void ShoudlSetRoverInInitialPosition ()
+        public void ShoudlSetRoverInInitialPosition()
         {
             _sut = new MarsRover("3 3");
 
             _sut.position = "1 2 N";
 
-            Assert.AreEqual("1 2 N", _sut.position); 
+            Assert.AreEqual("1 2 N", _sut.position);
+        }
+
+        [Test]
+        public void ShoudlRotateRoverToLeft()
+        {
+            _sut = new MarsRover("3 3");
+            _sut.position = "1 2 N";
+
+            _sut.move("L");
+
+            Assert.AreEqual("1 2 O", _sut.position);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace MarsRoverAcceptance
         public void FirstRover()
         {
             _sut.position = "1 2 N";
-            _sut.moves("LMLMLMLMM");
+            _sut.move("LMLMLMLMM");
 
             Assert.AreEqual(_sut.position, "1 3 N");
         }
@@ -26,7 +26,7 @@ namespace MarsRoverAcceptance
         public void SecondRover()
         {
             _sut.position = "3 3 E";
-            _sut.moves("MMRMMRMRRM");
+            _sut.move("MMRMMRMRRM");
 
             Assert.AreEqual(_sut.position, "1 3 N");
         }

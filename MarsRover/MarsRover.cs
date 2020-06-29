@@ -30,7 +30,10 @@ namespace MarsRover
 
         public void move(string move)
         {
-            position = "1 2 O";
+            var rotate = move.Equals("L")
+                        ? "O" 
+                        : "E";
+            position = "1 2 " + rotate;
         }
     }
 }

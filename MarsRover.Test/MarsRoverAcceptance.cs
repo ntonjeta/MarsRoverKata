@@ -5,12 +5,12 @@ namespace MarsRoverAcceptance
 {
     public class Tests
     {
-        private Rover _sut;
+        private MarsRover.MarsRover _sut;
 
         [SetUp]
         public void Setup()
         {
-            _sut = new Rover("5 5");
+            _sut = new MarsRover.MarsRover("5 5");
         }
 
         [Test]

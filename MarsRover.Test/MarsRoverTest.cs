@@ -4,8 +4,7 @@ namespace MarsRover.Test
 {
     public class Tests
     {
-
-        private Rover _sut;
+        private MarsRover _sut;
 
         [Test]
         public void ShouldCreateRoverFiveSquarePlatoue()
@@ -18,9 +17,9 @@ namespace MarsRover.Test
                 {0,0,0,0,0}
             };
 
-            _sut = new Rover("5 5");
+            _sut = new MarsRover("5 5");
 
-            Assert.AreEqual(ExpectedPlateau, _sut.plateau);
+            Assert.AreEqual(ExpectedPlateau, _sut.GetPlateau());
         }
 
         [Test]
@@ -32,9 +31,9 @@ namespace MarsRover.Test
                 {0,0}
             };
 
-            _sut = new Rover("3 2");
+            _sut = new MarsRover("3 2");
 
-            Assert.AreEqual(ExpectedPlateau, _sut.plateau);
+            Assert.AreEqual(ExpectedPlateau, _sut.GetPlateau());
         }
     }
 }

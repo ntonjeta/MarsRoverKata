@@ -2,18 +2,30 @@
 
 namespace MarsRover
 {
-    public class Rover
+    class Plateau
+    {
+        public int[,] board { get; set; }
+
+        public Plateau(int rows, int cols)
+        {
+            board = new int[rows, cols];
+        }
+    }
+
+    public class MarsRover
     {
         public string position { get; set; }
-        public int[,] plateau { get; set; }
+        private Plateau plateau;
 
-        public Rover(string dimension)
+        public MarsRover(string dimension)
         {
             var size = dimension.Split(' ');
-            var rows = Int32.Parse(size[0]);
-            var cols = Int32.Parse(size[1]);
+            plateau = new Plateau(Int32.Parse(size[0]), Int32.Parse(size[1]));
+        }
 
-            plateau = new int[rows, cols];
+        public int[,] GetPlateau()
+        {
+            return plateau.board;
         }
 
         public void moves(string v)

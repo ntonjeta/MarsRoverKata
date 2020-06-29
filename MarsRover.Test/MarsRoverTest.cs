@@ -35,5 +35,15 @@ namespace MarsRover.Test
 
             Assert.AreEqual(ExpectedPlateau, _sut.GetPlateau());
         }
+
+        [Test]
+        public void ShoudlSetRoverInInitialPosition ()
+        {
+            _sut = new MarsRover("3 3");
+
+            _sut.position = "1 2 N";
+
+            Assert.AreEqual("1 2 N", _sut.position); 
+        }
     }
 }

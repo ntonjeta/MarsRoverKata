@@ -41,31 +41,31 @@ namespace MarsRover.Test
         {
             _sut = new MarsRover("3 3");
 
-            _sut.position = "1 2 N";
+            _sut.SetRoverPosition("1 2 N");
 
-            Assert.AreEqual("1 2 N", _sut.position);
+            Assert.AreEqual("1 2 N", _sut.GetRoverPosition());
         }
 
         [Test]
         public void ShoudlRotateRoverToLeft()
         {
             _sut = new MarsRover("3 3");
-            _sut.position = "1 2 N";
+            _sut.SetRoverPosition("1 2 N");
 
-            _sut.move("L");
+            _sut.MoveRover("L");
 
-            Assert.AreEqual("1 2 O", _sut.position);
+            Assert.AreEqual("1 2 O", _sut.GetRoverPosition());
         }
 
         [Test]
         public void ShoudlRotateRoverToRigth()
         {
             _sut = new MarsRover("3 3");
-            _sut.position = "1 2 N";
+            _sut.SetRoverPosition("1 2 N");
 
-            _sut.move("R");
+            _sut.MoveRover("R");
 
-            Assert.AreEqual("1 2 E", _sut.position);
+            Assert.AreEqual("1 2 E", _sut.GetRoverPosition());
         }
     }
 }

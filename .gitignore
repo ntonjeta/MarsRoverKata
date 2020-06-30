@@ -227,3 +227,5 @@ project.lock.json
 
 # VSCode Ionide 
 .ionide
+
+.fake

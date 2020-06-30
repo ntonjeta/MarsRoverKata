@@ -16,19 +16,19 @@ namespace MarsRoverAcceptance
         [Test]
         public void FirstRover()
         {
-            _sut.position = "1 2 N";
-            _sut.move("LMLMLMLMM");
+            _sut.SetRoverPosition("1 2 N");
+            _sut.MoveRover("LMLMLMLMM");
 
-            Assert.AreEqual(_sut.position, "1 3 N");
+            Assert.AreEqual(_sut.GetRoverPosition(), "1 3 N");
         }
 
         [Test]
         public void SecondRover()
         {
-            _sut.position = "3 3 E";
-            _sut.move("MMRMMRMRRM");
+            _sut.SetRoverPosition("3 3 E");
+            _sut.MoveRover("MMRMMRMRRM");
 
-            Assert.AreEqual(_sut.position, "1 3 N");
+            Assert.AreEqual(_sut.GetRoverPosition(), "1 3 N");
         }
     }
 }

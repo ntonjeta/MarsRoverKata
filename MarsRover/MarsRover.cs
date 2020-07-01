@@ -2,6 +2,14 @@
 
 namespace MarsRover
 {
+    enum Direction : int
+    {
+        N = 0,
+        E = 1,
+        S = 2,
+        O = 3
+    }
+
     class Plateau
     {
         public int[,] board { get; set; }
@@ -16,19 +24,26 @@ namespace MarsRover
     {
         public string position { get; set; }
 
-        public void move(string move)
+        public void Move(string move)
         {
-            var rows = position.Split(' ')[0];
-            var cols = position.Split(' ')[1];
-            string cellPosition = rows + " " + cols + " ";
-
-            position = cellPosition + GetNewDirection(move);
+            foreach (char c in move)
+            {
+                position = GetCellPosition() + Rotate(c);
+            }
         }
 
-        private string GetNewDirection(string move)
+        private string GetCellPosition()
         {
-            var actualDirection = position.Split(' ')[2];
-            return (move == "L") ? "O" : "E";
+            return position.Split(' ')[0] + " " + position.Split(' ')[1] + " ";
+        }
+
+        private string Rotate(char ratation)
+        {
+            var orientation = Enum.Parse(typeof(Direction), position.Split(' ')[2]);
+            orientation = (ratation.Equals('R'))
+                ? ((int)orientation + 1) % 4
+                : ((int)orientation + 3) % 4;
+            return ((Direction)orientation).ToString();
         }
     }
 
@@ -51,7 +66,7 @@ namespace MarsRover
 
         public void MoveRover(string moveCommand)
         {
-            _rover.move(moveCommand);
+            _rover.Move(moveCommand);
         }
 
         public string GetRoverPosition()

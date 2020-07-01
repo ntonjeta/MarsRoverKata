@@ -1,10 +1,21 @@
 using NUnit.Framework;
+using MarsRover;
 
 namespace MarsRover.Test
 {
     public class Tests
     {
-        private MarsRover _sut;
+        private const string InitialPosition = "1 2 N";
+        private const string PlateauDimension = "3 3";
+
+        private MarsRover _marsRover;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _marsRover = new MarsRover(PlateauDimension);
+            _marsRover.PlaceRover(new Rover(InitialPosition));
+        }
 
         [Test]
         public void ShouldCreateRoverFiveSquarePlatoue()
@@ -17,9 +28,9 @@ namespace MarsRover.Test
                 {0,0,0,0,0}
             };
 
-            _sut = new MarsRover("5 5");
+            _marsRover = new MarsRover("5 5");
 
-            Assert.AreEqual(ExpectedPlateau, _sut.GetPlateau());
+            Assert.AreEqual(ExpectedPlateau, _marsRover.GetPlateau());
         }
 
         [Test]
@@ -31,52 +42,45 @@ namespace MarsRover.Test
                 {0,0}
             };
 
-            _sut = new MarsRover("3 2");
+            _marsRover = new MarsRover("3 2");
 
-            Assert.AreEqual(ExpectedPlateau, _sut.GetPlateau());
+            Assert.AreEqual(ExpectedPlateau, _marsRover.GetPlateau());
         }
 
         [Test]
         public void ShoudlSetRoverInInitialPosition()
         {
-            _sut = new MarsRover("3 3");
-
-            _sut.SetRoverPosition("1 2 N");
-
-            Assert.AreEqual("1 2 N", _sut.GetRoverPosition());
+            Assert.AreEqual(InitialPosition, _marsRover.GetRoverPosition());
         }
 
         [Test]
         public void ShoudlRotateRoverToLeft()
         {
-            _sut = new MarsRover("3 3");
-            _sut.SetRoverPosition("1 2 N");
+            const string ExpectedPosition = "1 2 O";
 
-            _sut.MoveRover("L");
+            var rover = _marsRover.MoveRover("L");
 
-            Assert.AreEqual("1 2 O", _sut.GetRoverPosition());
+            Assert.AreEqual(ExpectedPosition, rover.position);
         }
 
         [Test]
         public void ShoudlRotateRoverToRigth()
         {
-            _sut = new MarsRover("3 3");
-            _sut.SetRoverPosition("1 2 N");
+            const string ExpectedPosition = "1 2 E";
 
-            _sut.MoveRover("R");
+            var rover = _marsRover.MoveRover("R");
 
-            Assert.AreEqual("1 2 E", _sut.GetRoverPosition());
+            Assert.AreEqual(ExpectedPosition, rover.position);
         }
 
         [Test]
         public void ShoudlRotateRoverTwoTimeToRigth()
         {
-            _sut = new MarsRover("3 3");
-            _sut.SetRoverPosition("1 2 N");
+            const string ExpectedPosition = "1 2 S";
 
-            _sut.MoveRover("RR");
+            var rover = _marsRover.MoveRover("RR");
 
-            Assert.AreEqual("1 2 S", _sut.GetRoverPosition());
+            Assert.AreEqual(ExpectedPosition, rover.position);
         }
     }
 }

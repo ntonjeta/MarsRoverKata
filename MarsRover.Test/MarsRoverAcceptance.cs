@@ -16,7 +16,7 @@ namespace MarsRoverAcceptance
         [Test]
         public void FirstRover()
         {
-            _sut.SetRoverPosition("1 2 N");
+            _sut.PlaceRover(new Rover("1 2 N"));
             _sut.MoveRover("LMLMLMLMM");
 
             Assert.AreEqual(_sut.GetRoverPosition(), "1 3 N");
@@ -25,7 +25,7 @@ namespace MarsRoverAcceptance
         [Test]
         public void SecondRover()
         {
-            _sut.SetRoverPosition("3 3 E");
+            _sut.PlaceRover(new Rover("3 3 E"));
             _sut.MoveRover("MMRMMRMRRM");
 
             Assert.AreEqual(_sut.GetRoverPosition(), "1 3 N");

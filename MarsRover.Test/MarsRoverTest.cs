@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using MarsRover;
 
 namespace MarsRover.Test
 {
@@ -7,12 +8,12 @@ namespace MarsRover.Test
         private const string InitialPosition = "1 2 N";
         private const string PlateauDimension = "3 3";
 
-        private MarsRover _marsRover;
+        private RoverControl _marsRover;
 
         [SetUp]
         public void SetUp()
         {
-            _marsRover = new MarsRover(PlateauDimension);
+            _marsRover = new RoverControl(PlateauDimension);
             _marsRover.PlaceRover(new Rover(InitialPosition));
         }
 
@@ -27,7 +28,7 @@ namespace MarsRover.Test
                 {0,0,0,0,0}
             };
 
-            _marsRover = new MarsRover("5 5");
+            _marsRover = new RoverControl("5 5");
 
             Assert.AreEqual(ExpectedPlateau, _marsRover.GetPlateau());
         }
@@ -41,7 +42,7 @@ namespace MarsRover.Test
                 {0,0}
             };
 
-            _marsRover = new MarsRover("3 2");
+            _marsRover = new RoverControl("3 2");
 
             Assert.AreEqual(ExpectedPlateau, _marsRover.GetPlateau());
         }

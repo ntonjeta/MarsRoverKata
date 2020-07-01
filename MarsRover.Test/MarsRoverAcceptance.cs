@@ -5,30 +5,30 @@ namespace MarsRoverAcceptance
 {
     public class Tests
     {
-        private MarsRover.MarsRover _sut;
+        private RoverControl Control;
 
         [SetUp]
         public void Setup()
         {
-            _sut = new MarsRover.MarsRover("5 5");
+            Control = new RoverControl("5 5");
         }
 
         [Test]
         public void FirstRover()
         {
-            _sut.PlaceRover(new Rover("1 2 N"));
-            _sut.MoveRover("LMLMLMLMM");
+            Control.PlaceRover(new Rover("1 2 N"));
+            Control.MoveRover("LMLMLMLMM");
 
-            Assert.AreEqual(_sut.GetRoverPosition(), "1 3 N");
+            Assert.AreEqual(Control.GetRoverPosition(), "1 3 N");
         }
 
         [Test]
         public void SecondRover()
         {
-            _sut.PlaceRover(new Rover("3 3 E"));
-            _sut.MoveRover("MMRMMRMRRM");
+            Control.PlaceRover(new Rover("3 3 E"));
+            Control.MoveRover("MMRMMRMRRM");
 
-            Assert.AreEqual(_sut.GetRoverPosition(), "1 3 N");
+            Assert.AreEqual(Control.GetRoverPosition(), "1 3 N");
         }
     }
 }

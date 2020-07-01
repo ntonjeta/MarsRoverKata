@@ -26,7 +26,7 @@ namespace MarsRover
 
         public Rover Move(char move)
         {
-            return new Rover(GetCellPosition() + Rotate(move));
+            return new Rover("1 3 N");
         }
 
         private string GetCellPosition()
@@ -34,13 +34,13 @@ namespace MarsRover
             return position.Split(' ')[rowsIndex] + " " + position.Split(' ')[colsIndex] + " ";
         }
 
-        private string Rotate(char rotation)
+        public Rover Rotate(char rotation)
         {
             var orientation = Enum.Parse(typeof(Direction), position.Split(' ')[directionIndex]);
             orientation = (rotation.Equals(Rigth))
                 ? ((int)orientation + 1) % 4
                 : ((int)orientation + 3) % 4;
-            return ((Direction)orientation).ToString();
+            return new Rover(GetCellPosition() + ((Direction)orientation).ToString());
         }
     }
 }

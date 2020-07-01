@@ -33,7 +33,18 @@ namespace MarsRover
         {
             foreach (char move in moveCommand)
             {
-                _rover = _rover.Move(move);
+                switch (move)
+                {
+                    case 'M':
+                        _rover = _rover.Move( move);
+                        break;
+                    case 'R':
+                    case 'L':
+                        _rover = _rover.Rotate(move);
+                        break;
+                    default:
+                        break;
+                }
             }
 
             return _rover;

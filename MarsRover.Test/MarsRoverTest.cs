@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using MarsRover;
 
 namespace MarsRover.Test
 {
@@ -81,6 +80,16 @@ namespace MarsRover.Test
             var rover = _marsRover.MoveRover("RR");
 
             Assert.AreEqual(ExpectedPosition, rover.position);
+        }
+
+        [Test]
+        public void ShouldMoveRoverOfOnePosition()
+        {
+            const string ExpectedPosition = "1 3 N";
+
+            var rover = _marsRover.MoveRover("M");
+
+            Assert.AreEqual(ExpectedPosition,rover.position);
         }
     }
 }

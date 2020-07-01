@@ -67,5 +67,16 @@ namespace MarsRover.Test
 
             Assert.AreEqual("1 2 E", _sut.GetRoverPosition());
         }
+
+        [Test]
+        public void ShoudlRotateRoverTwoTimeToRigth()
+        {
+            _sut = new MarsRover("3 3");
+            _sut.SetRoverPosition("1 2 N");
+
+            _sut.MoveRover("RR");
+
+            Assert.AreEqual("1 2 S", _sut.GetRoverPosition());
+        }
     }
 }

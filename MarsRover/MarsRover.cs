@@ -11,9 +11,11 @@ namespace MarsRover
             board = new int[rows, cols];
         }
 
-        internal Rover Move(char command)
+        internal Rover Move(Rover rover, char command)
         {
-            return new Rover("1 3 N");
+            var col = Int32.Parse(rover.position.Split(' ')[1]);
+            col++;
+            return new Rover("1 " + col.ToString() + " N");
         }
     }
 
@@ -48,7 +50,7 @@ namespace MarsRover
             switch (command)
             {
                 case 'M':
-                    _rover = _plateau.Move(command);
+                    _rover = _plateau.Move(_rover,command);
                     break;
                 case 'R':
                 case 'L':

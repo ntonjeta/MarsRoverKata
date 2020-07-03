@@ -58,9 +58,9 @@ namespace MarsRover.Test
         {
             const string ExpectedPosition = "1 2 O";
 
-            var rover = _marsRover.MoveRover("L");
+            _marsRover.MoveRover("L");
 
-            Assert.AreEqual(ExpectedPosition, rover.position);
+            Assert.AreEqual(ExpectedPosition, _marsRover.GetRoverPosition());
         }
 
         [Test]
@@ -68,9 +68,9 @@ namespace MarsRover.Test
         {
             const string ExpectedPosition = "1 2 E";
 
-            var rover = _marsRover.MoveRover("R");
+            _marsRover.MoveRover("R");
 
-            Assert.AreEqual(ExpectedPosition, rover.position);
+            Assert.AreEqual(ExpectedPosition, _marsRover.GetRoverPosition());
         }
 
         [Test]
@@ -78,9 +78,9 @@ namespace MarsRover.Test
         {
             const string ExpectedPosition = "1 2 S";
 
-            var rover = _marsRover.MoveRover("RR");
+            _marsRover.MoveRover("RR");
 
-            Assert.AreEqual(ExpectedPosition, rover.position);
+            Assert.AreEqual(ExpectedPosition, _marsRover.GetRoverPosition());
         }
 
         [Test]
@@ -88,25 +88,25 @@ namespace MarsRover.Test
         {
             const string ExpectedPosition = "1 2 S";
 
-            var rover = _marsRover.MoveRover("LL");
+            _marsRover.MoveRover("LL");
 
-            Assert.AreEqual(ExpectedPosition, rover.position);
+            Assert.AreEqual(ExpectedPosition, _marsRover.GetRoverPosition());
         }
 
         [Test]
         public void ShoudlRotateRoverAndReturnToInitialPosition()
         {
-            var rover = _marsRover.MoveRover("RL");
+            _marsRover.MoveRover("RL");
 
-            Assert.AreEqual(InitialPosition, rover.position);
+            Assert.AreEqual(InitialPosition, _marsRover.GetRoverPosition());
         }
 
         [Test]
         public void ShoudlMakeCompleteRotationAndReturnToInitialPosition()
         {
-            var rover = _marsRover.MoveRover("RRRR");
+            _marsRover.MoveRover("RRRR");
 
-            Assert.AreEqual(InitialPosition, rover.position);
+            Assert.AreEqual(InitialPosition, _marsRover.GetRoverPosition());
         }
 
         [Test]
@@ -114,9 +114,9 @@ namespace MarsRover.Test
         {
             const string ExpectedPosition = "1 3 N";
 
-            var rover = _marsRover.MoveRover("M");
+            _marsRover.MoveRover("M");
 
-            Assert.AreEqual(ExpectedPosition,rover.position);
+            Assert.AreEqual(ExpectedPosition, _marsRover.GetRoverPosition());
         }
 
         [Test]
@@ -124,9 +124,9 @@ namespace MarsRover.Test
         {
             const string ExpectedPosition = "1 4 N";
 
-            var rover = _marsRover.MoveRover("MM");
+            _marsRover.MoveRover("MM");
 
-            Assert.AreEqual(ExpectedPosition,rover.position);
+            Assert.AreEqual(ExpectedPosition, _marsRover.GetRoverPosition());
         }
 
         [Test]
@@ -134,9 +134,9 @@ namespace MarsRover.Test
         {
             const string ExpectedPosition = "0 2 O";
 
-           var rover = _marsRover.MoveRover("LM");
+            _marsRover.MoveRover("LM");
 
-            Assert.AreEqual(ExpectedPosition,rover.position);
+            Assert.AreEqual(ExpectedPosition, _marsRover.GetRoverPosition());
         }
     }
 }

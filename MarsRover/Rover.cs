@@ -15,7 +15,7 @@ namespace MarsRover
         private const char Rigth = 'R';
         private const int rowsIndex = 0;
         private const int colsIndex = 1;
-        private const int directionIndex = 2;
+        private const int orientationIndex = 2;
 
         public string position { get; set; }
 
@@ -24,23 +24,33 @@ namespace MarsRover
             this.position = position;
         }
 
-        public Rover Move(char move)
+        public Rover Rotate(char rotation)
         {
-            return new Rover("1 3 N");
+            var orientation = Enum.Parse(typeof(Direction), Orientation());
+            orientation = (rotation.Equals(Rigth))
+                ? ((int)orientation + 1) % 4
+                : ((int)orientation + 3) % 4;
+            return new Rover($"{Row()} {Col()} { ((Direction)orientation).ToString() }");
+        }
+
+        public string Row()
+        {
+            return position.Split(' ')[rowsIndex];
+        }
+
+        public string Col()
+        {
+            return position.Split(' ')[colsIndex];
+        }
+
+        public string Orientation()
+        {
+            return position.Split(' ')[orientationIndex];
         }
 
         private string GetCellPosition()
         {
-            return position.Split(' ')[rowsIndex] + " " + position.Split(' ')[colsIndex] + " ";
-        }
-
-        public Rover Rotate(char rotation)
-        {
-            var orientation = Enum.Parse(typeof(Direction), position.Split(' ')[directionIndex]);
-            orientation = (rotation.Equals(Rigth))
-                ? ((int)orientation + 1) % 4
-                : ((int)orientation + 3) % 4;
-            return new Rover(GetCellPosition() + ((Direction)orientation).ToString());
+            return $"{Row()} {Col()} ";
         }
     }
 }

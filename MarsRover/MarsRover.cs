@@ -2,28 +2,6 @@
 
 namespace MarsRover
 {
-    class Plateau
-    {
-        public int[,] board { get; set; }
-
-        public Plateau(int rows, int cols)
-        {
-            board = new int[rows, cols];
-        }
-
-        internal Rover Move(Rover rover, char command)
-        {
-            var row = Int32.Parse(rover.position.Split(' ')[0]);
-            var col = Int32.Parse(rover.position.Split(' ')[1]);
-            var or = rover.position.Split(' ')[2];
-            if (or.ToString() == "N")
-                col++;
-            else 
-                row--;
-            return new Rover($"{row.ToString()} {col.ToString()} {or.ToString()}");
-        }
-    }
-
     public class RoverControl
     {
         private Rover _rover;
@@ -40,14 +18,12 @@ namespace MarsRover
             return _plateau.board;
         }
 
-        public Rover MoveRover(string commandList)
+        public void MoveRover(string commandList)
         {
             foreach (char move in commandList)
             {
                 SendCommand(move);
             }
-
-            return _rover;
         }
 
         private void SendCommand(char command)
@@ -68,7 +44,7 @@ namespace MarsRover
 
         public string GetRoverPosition()
         {
-            return _rover.position;
+            return $"{_rover.Row()} {_rover.Col()} {_rover.Orientation()}";
         }
 
         public void PlaceRover(Rover rover)

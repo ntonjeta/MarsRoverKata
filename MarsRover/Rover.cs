@@ -17,7 +17,7 @@ namespace MarsRover
         private const int colsIndex = 1;
         private const int orientationIndex = 2;
 
-        public string position { get; set; }
+        private string position;
 
         public Rover(string position)
         {

@@ -6,7 +6,7 @@ namespace MarsRover.Test
     public class Tests
     {
         private const string InitialPosition = "1 2 N";
-        private const string PlateauDimension = "3 3";
+        private const string PlateauDimension = "4 4";
 
         private RoverControl _marsRover;
 
@@ -115,6 +115,16 @@ namespace MarsRover.Test
             const string ExpectedPosition = "1 3 N";
 
             var rover = _marsRover.MoveRover("M");
+
+            Assert.AreEqual(ExpectedPosition,rover.position);
+        }
+
+        [Test]
+        public void ShouldMoveRoverOfTwoPosition()
+        {
+            const string ExpectedPosition = "1 4 N";
+
+            var rover = _marsRover.MoveRover("MM");
 
             Assert.AreEqual(ExpectedPosition,rover.position);
         }

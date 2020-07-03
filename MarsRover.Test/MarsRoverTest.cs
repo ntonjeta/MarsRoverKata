@@ -84,6 +84,32 @@ namespace MarsRover.Test
         }
 
         [Test]
+        public void ShoudlRotateRoverTwoTimeToLeft()
+        {
+            const string ExpectedPosition = "1 2 S";
+
+            var rover = _marsRover.MoveRover("LL");
+
+            Assert.AreEqual(ExpectedPosition, rover.position);
+        }
+
+        [Test]
+        public void ShoudlRotateRoverAndReturnToInitialPosition()
+        {
+            var rover = _marsRover.MoveRover("RL");
+
+            Assert.AreEqual(InitialPosition, rover.position);
+        }
+
+        [Test]
+        public void ShoudlMakeCompleteRotationAndReturnToInitialPosition()
+        {
+            var rover = _marsRover.MoveRover("RRRR");
+
+            Assert.AreEqual(InitialPosition, rover.position);
+        }
+
+        [Test]
         public void ShouldMoveRoverOfOnePosition()
         {
             const string ExpectedPosition = "1 3 N";

@@ -130,11 +130,21 @@ namespace MarsRover.Test
         }
 
         [Test]
-        public void ShouldRotateAndMoveRover()
+        public void ShouldRotateLeftAndMoveRover()
         {
             const string ExpectedPosition = "0 2 O";
 
             _marsRover.MoveRover("LM");
+
+            Assert.AreEqual(ExpectedPosition, _marsRover.GetRoverPosition());
+        }
+
+        [Test]
+        public void ShouldRotateRigthAndMoveRover()
+        {
+            const string ExpectedPosition = "2 2 E";
+
+            _marsRover.MoveRover("RM");
 
             Assert.AreEqual(ExpectedPosition, _marsRover.GetRoverPosition());
         }

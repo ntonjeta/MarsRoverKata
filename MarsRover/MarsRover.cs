@@ -10,6 +10,11 @@ namespace MarsRover
         {
             board = new int[rows, cols];
         }
+
+        internal Rover Move(char command)
+        {
+            return new Rover("1 3 N");
+        }
     }
 
     public class RoverControl
@@ -43,7 +48,7 @@ namespace MarsRover
             switch (command)
             {
                 case 'M':
-                    _rover = _rover.Move(command);
+                    _rover = _plateau.Move(command);
                     break;
                 case 'R':
                 case 'L':

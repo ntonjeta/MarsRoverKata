@@ -20,6 +20,8 @@ namespace MarsRover
                 col++;
             else if (or.ToString() == "E")
                 row++;
+            else if (or == Direction.S)
+                col--;
             else
                 row--;
             return new Rover($"{row.ToString()} {col.ToString()} {or.ToString()}");

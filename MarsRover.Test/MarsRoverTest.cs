@@ -119,6 +119,7 @@ namespace MarsRover.Test
             Assert.AreEqual(ExpectedPosition, _marsRover.GetRoverPosition());
         }
 
+        // TODO goes out of the board. Next step should fail!
         [Test]
         public void ShouldMoveRoverOfTwoPosition()
         {
@@ -145,6 +146,16 @@ namespace MarsRover.Test
             const string ExpectedPosition = "2 2 E";
 
             _marsRover.MoveRover("RM");
+
+            Assert.AreEqual(ExpectedPosition, _marsRover.GetRoverPosition());
+        }
+
+        [Test]
+        public void ShouldRotateTwoTimeAndMove()
+        {
+            const string ExpectedPosition = "1 1 S";
+
+            _marsRover.MoveRover("RRM");
 
             Assert.AreEqual(ExpectedPosition, _marsRover.GetRoverPosition());
         }

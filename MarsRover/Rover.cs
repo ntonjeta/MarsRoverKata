@@ -16,7 +16,7 @@ namespace MarsRover
         private const int rowsIndex = 0;
         private const int colsIndex = 1;
         private const int orientationIndex = 2;
-
+        private const int DirectionCardinality = 4;
         private string position;
 
         public Rover(string position)
@@ -27,10 +27,20 @@ namespace MarsRover
         public Rover Rotate(char rotation)
         {
             var newOrientation = (rotation.Equals(Rigth))
-                ? ((int)Direction() + 1) % 4
-                : ((int)Direction() + 3) % 4;
+                ? RotateToRigth()
+                : RotateToLeft();
 
             return new Rover($"{Row()} {Col()} { ((Direction)newOrientation).ToString() }");
+        }
+
+        private int RotateToLeft()
+        {
+            return ((int)Direction() + 3) % DirectionCardinality;
+        }
+
+        private int RotateToRigth()
+        {
+            return ((int)Direction() + 1) % DirectionCardinality;
         }
 
         public string Row()

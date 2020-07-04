@@ -19,7 +19,7 @@ namespace MarsRoverAcceptance
             Control.PlaceRover(new Rover("1 2 N"));
             Control.MoveRover("LMLMLMLMM");
 
-            Assert.AreEqual(Control.GetRoverPosition(), "1 3 N");
+            Assert.AreEqual("1 3 N", Control.GetRoverPosition());
         }
 
         [Test]
@@ -28,7 +28,7 @@ namespace MarsRoverAcceptance
             Control.PlaceRover(new Rover("3 3 E"));
             Control.MoveRover("MMRMMRMRRM");
 
-            Assert.AreEqual(Control.GetRoverPosition(), "1 3 N");
+            Assert.AreEqual("5 1 E", Control.GetRoverPosition());
         }
     }
 }

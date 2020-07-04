@@ -44,7 +44,7 @@ namespace MarsRover
 
         public string GetRoverPosition()
         {
-            return $"{_rover.Row()} {_rover.Col()} {_rover.Orientation()}";
+            return $"{_rover.Row()} {_rover.Col()} {_rover.Direction()}";
         }
 
         public void PlaceRover(Rover rover)

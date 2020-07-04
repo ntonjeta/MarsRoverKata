@@ -2,7 +2,7 @@ using System;
 
 namespace MarsRover
 {
-    enum Direction : int
+    public enum Direction : int
     {
         N = 0,
         E = 1,
@@ -26,11 +26,11 @@ namespace MarsRover
 
         public Rover Rotate(char rotation)
         {
-            var orientation = Enum.Parse(typeof(Direction), Orientation());
-            orientation = (rotation.Equals(Rigth))
-                ? ((int)orientation + 1) % 4
-                : ((int)orientation + 3) % 4;
-            return new Rover($"{Row()} {Col()} { ((Direction)orientation).ToString() }");
+            var newOrientation = (rotation.Equals(Rigth))
+                ? ((int)Direction() + 1) % 4
+                : ((int)Direction() + 3) % 4;
+
+            return new Rover($"{Row()} {Col()} { ((Direction)newOrientation).ToString() }");
         }
 
         public string Row()
@@ -43,9 +43,19 @@ namespace MarsRover
             return position.Split(' ')[colsIndex];
         }
 
-        public string Orientation()
+        public int RowIndex()
         {
-            return position.Split(' ')[orientationIndex];
+            return Int32.Parse(this.Row());
+        }
+
+        public int ColIndex()
+        {
+            return Int32.Parse(this.Col());
+        }
+
+        public Direction Direction()
+        {
+            return (Direction)Enum.Parse(typeof(Direction), position.Split(' ')[orientationIndex]);
         }
 
         private string GetCellPosition()

@@ -13,9 +13,9 @@ namespace MarsRover
 
         public Rover Move(Rover rover, char command)
         {
-            var row = Int32.Parse(rover.Row());
-            var col = Int32.Parse(rover.Col());
-            var or = rover.Orientation();
+            var row = rover.RowIndex();
+            var col = rover.ColIndex();
+            var or = rover.Direction();
             if (or.ToString() == "N")
                 col++;
             else if (or.ToString() == "E")

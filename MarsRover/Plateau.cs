@@ -15,16 +15,23 @@ namespace MarsRover
         {
             var row = rover.RowIndex();
             var col = rover.ColIndex();
-            var or = rover.Direction();
-            if (or.ToString() == "N")
-                col++;
-            else if (or.ToString() == "E")
-                row++;
-            else if (or == Direction.S)
-                col--;
-            else
-                row--;
-            return new Rover($"{row.ToString()} {col.ToString()} {or.ToString()}");
+
+            switch (rover.Direction())
+            {
+                case Direction.N:
+                    col++;
+                    break;
+                case Direction.E:
+                    row++;
+                    break;
+                case Direction.S:
+                    col--;
+                    break;
+                case Direction.O:
+                    row--;
+                    break;
+            }
+            return new Rover($"{row.ToString()} {col.ToString()} {rover.Direction().ToString()}");
         }
     }
 }
